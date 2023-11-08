@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import useWeather from "../hooks/useWeather";
+import {useWeatherStore} from "../hooks/useWeather";
+
 
 const Bar = () => {
   const [ciudad, setCiudad] = useState('');
@@ -10,7 +11,7 @@ const Bar = () => {
     }
   }
   return (
-    <div class="rounded-md bg-gray-600 my-3 flex flex-row">
+    <div class="rounded-md bg-gray-600 bg-opacity-40 backdrop-blur-md mb-3 flex flex-row py-2">
       <img 
         src="../../public/location.png"
         class='invert ml-2 h-6 self-center'
