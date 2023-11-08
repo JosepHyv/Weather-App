@@ -1,13 +1,36 @@
 import React from "react";
+import axios from 'axios';
 import { useState } from "react";
 import {useWeatherStore} from "../hooks/useWeather";
+const geourl = `http://api.openweathermap.org/geo/1.0/direct`;
+const weatherurl = `https://api.openweathermap.org/data/2.5/weather`;
+const appid = import.meta.env.PUBLIC_API_KEY;
+
+const geoparams = {
+  q: '',
+  limit:5,
+  appid
+}
+
 
 
 const Bar = () => {
   const [ciudad, setCiudad] = useState('');
+  const {parse} = useWeatherStore();
   const Search = (event) => {
     if(event.key === 'Enter'){
-      console.log(ciudad);
+      geoparams.q = ciudad;
+      axios.get(geourl, {params: geoparams}).then((response) => {
+        const result = response.data;
+        if(result.length && 'lon' in result[0]){
+          const {lon, lat} = result[0];
+          const wparams = {lon, lat, units:'Metric', appid};
+          axios.get(weatherurl, {params: wparams}).then(responses => {
+            console.log(responses.data);
+            parse(responses.data);
+          })
+        }
+      })
     }
   }
   return (
