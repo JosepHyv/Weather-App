@@ -15,12 +15,12 @@ const Info = () => {
         </div>
         <div class="flex justify-around h-1/2 ">
           <div class="flex flex-col justify-around w-auto ">
-            <Card/>
-            <Card/>
+            <Card Title='Sensacion Termica' BigData="28°C"/>
+            <Card Title='Precipitaciones'/>
           </div>
           <div class="flex flex-col justify-around w-auto">
-            <Card/>
-            <Card/>
+            <Card Title='Visibilidad'/>
+            <Card Title='Humedad'/>
           </div>
         </div>
 

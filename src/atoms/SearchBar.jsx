@@ -11,7 +11,7 @@ const Bar = () => {
     }
   }
   return (
-    <div class="rounded-md bg-gray-600 bg-opacity-40 backdrop-blur-md mb-3 flex flex-row py-2 shadow-md">
+    <div class="rounded-full bg-gray-600 bg-opacity-40 backdrop-blur-md mb-3 flex flex-row py-2 shadow-md">
       <img 
         src="../../public/location.png"
         class='invert ml-2 h-6 self-center'

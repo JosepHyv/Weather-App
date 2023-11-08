@@ -1,6 +1,8 @@
 import React from 'react';
 import WeatherCarrusel from '../molecules/WeatherCarrusel';
 import { useWeatherStore } from '../hooks/useWeather';
+import UvCard from '../atoms/UvCard';
+import WindCard from '../atoms/WindCard';
 const  ExtraWeaterInfo = () => {
     
     // const {...nest} = useWeatherStore();
@@ -83,7 +85,11 @@ const  ExtraWeaterInfo = () => {
         <div class='flex flex-col h-full justify-around'>
             <WeatherCarrusel Title="Pronostico por hora" WeatherList={climaPorHora}/>
             <WeatherCarrusel Title="Pronostico de los proximos 10 dias" WeatherList={climaPorHora}/>
-            <WeatherCarrusel Title="Pronostico por hora" WeatherList={climaPorHora}/>
+            <div class="flex flex-row justify-evenly">
+                <UvCard/>
+                <WindCard/>
+
+            </div>
         </div>
     )
 };

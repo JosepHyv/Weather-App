@@ -7,7 +7,7 @@ const WeatherCarrusel = ({Title="Example Title", WeatherList=[]}) => {
 
     })
     return (
-        <div class="bg-gray-700 bg-opacity-30 backdrop-blur-md w-full h-auto flex flex-col justify-around rounded-md p-5 shadow-md">
+        <div class="bg-gray-700 bg-opacity-30 backdrop-blur-md w-full h-auto flex flex-col justify-around rounded-2xl p-5 shadow-md">
             <div class="border-b-2 p-2">
                 <h2 class='text-start text-xl font-medium text-blue-50 text-opacity-50 capitalize'>
                  {Title}
