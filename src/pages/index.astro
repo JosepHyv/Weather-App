@@ -1,7 +1,8 @@
 ---
-import Card from "../molecules/InfoCard";
-import Bar from "../molecules/SearchBar";
+import Card from "../atoms/InfoCard";
+import Bar from "../atoms/SearchBar";
 import Info from "../organism/WeatherInfo";
+import ExtraWeaterInfo from "../organism/ExtraWeaterInfo";
 ---
 
 <html lang="en">
@@ -12,7 +13,7 @@ import Info from "../organism/WeatherInfo";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body class="h-screen">
+  <body class="h-full">
     <video autoplay loop muted class="absolute inset-0 w-full">
       <source src="../../public/OnlyClouds.mp4" type="video/mp4" />
     </video>
@@ -23,8 +24,9 @@ import Info from "../organism/WeatherInfo";
         <Info client:idle />
       </div>
       <div
-        class="backdrop-blur-md w-2/3 mx-16 p-10 rounded-md bg-opacity-30 bg-gray-500"
+        class="backdrop-blur-md w-2/3 p-10 rounded-md bg-opacity-30 bg-gray-500"
       >
+        <ExtraWeaterInfo />
       </div>
     </div>
   </body>

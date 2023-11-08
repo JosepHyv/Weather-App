@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useWeatherStore } from "../hooks/useWeather";
-import Card from '../molecules/InfoCard';
+import Card from '../atoms/InfoCard';
 
 const Info = () => {
 
@@ -14,11 +14,11 @@ const Info = () => {
             <p class=" text-5xl drop-shadow-md text-white font-medium">Dia con nubes</p>
         </div>
         <div class="flex justify-around h-1/2 ">
-          <div class="flex flex-col justify-around ">
+          <div class="flex flex-col justify-around w-auto ">
             <Card/>
             <Card/>
           </div>
-          <div class="flex flex-col justify-around">
+          <div class="flex flex-col justify-around w-auto">
             <Card/>
             <Card/>
           </div>
