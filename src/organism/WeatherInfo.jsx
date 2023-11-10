@@ -8,7 +8,7 @@ const Info = () => {
   const {
     weather,
     feels,
-    himidity,
+    humidity,
     description,
     min_temp,
     max_temp,
@@ -34,7 +34,7 @@ const Info = () => {
         </p>
       </div>
       <div class="flex justify-around h-1/2 ">
-        <div class="flex flex-col justify-between items-center border mt-5 w-1/2">
+        <div class="flex flex-col justify-between items-center mt-5 w-1/2">
           <Card
             Title="Sensacion Termica"
             BigData={feels}
@@ -46,14 +46,19 @@ const Info = () => {
             info="Medida durante la ultima hora"
           />
         </div>
-        <div class="flex flex-col justify-between items-center border mt-5 w-1/2">
+        <div class="flex flex-col justify-between items-center mt-5 w-1/2">
           <Card
             Title="Visibilidad"
             BigData={visibility}
             description={"Durante la ultima hora"}
             info={"Medida en Kilometros"}
           />
-          <Card Title="Humedad" />
+          <Card
+            Title="Humedad"
+            BigData={humidity}
+            description="Porcentaje de Humedad"
+            info="La humedad se mide con base en la medida de la precipitacion y el clima actual"
+          />
         </div>
       </div>
     </div>

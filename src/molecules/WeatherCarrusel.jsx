@@ -1,24 +1,55 @@
 import React from "react";
 import WeatherCard from "../atoms/WeatherCard";
+import { render } from "react-dom";
 
-const WeatherCarrusel = ({Title="Example Title", WeatherList=[]}) => {
-    const renderCards = WeatherList.map(weather => {
-        return <WeatherCard Title={weather.title} Temp={weather.temp} Icon={weather.icon}/>
-
-    })
+const WeatherCarrusel = ({ Title = "Example Title", WeatherList = [] }) => {
+  console.log("algo");
+  const renderCards = WeatherList.map((weather) => {
     return (
-        <div class="bg-gray-700 bg-opacity-30 backdrop-blur-md w-full h-auto flex flex-col justify-around rounded-2xl p-5 shadow-md">
-            <div class="border-b-2 p-2">
-                <h2 class='text-start text-xl font-medium text-blue-50 text-opacity-50 capitalize'>
-                 {Title}
-                 </h2>
-            </div>
-            <div class="flex flex-row justify-between overflow-x-scroll scrollbar-thin  scrollbar-thumb-gray-400 scrollbar-rounded-full">
-                {renderCards}
+      <WeatherCard
+        Title={weather.title}
+        Temp={weather.temp}
+        Icon={weather.icon}
+        desc={weather.desc}
+      />
+    );
+  });
 
-            </div>
+  const ShowData = () => {
+    const renderCards = WeatherList.map((weather) => {
+      return (
+        <WeatherCard
+          Title={weather.title}
+          Temp={weather.temp}
+          Icon={weather.icon}
+          desc={weather.desc}
+        />
+      );
+    });
+
+    if (!renderCards.length)
+      return (
+        <div class="p-10 items-center w-full text-center ">
+          <p class="text-4xl text-blue-50 text-opacity-50 font-semibold ">
+            No hay data para mostrar
+          </p>
         </div>
-    )
-}
+      );
+    return renderCards;
+  };
+
+  return (
+    <div class="bg-gray-700 bg-opacity-30 backdrop-blur-md w-full h-2/5 flex flex-col justify-start rounded-2xl p-3 shadow-md">
+      <div class="border-b-2 mt-3 mb-5">
+        <h2 class="text-start text-xl font-medium text-blue-50 text-opacity-50 capitalize">
+          {Title}
+        </h2>
+      </div>
+      <div class="flex flex-row justify-between overflow-x-scroll scrollbar-thin w-auto scrollbar-thumb-gray-400 scrollbar-rounded-full">
+        {ShowData()}
+      </div>
+    </div>
+  );
+};
 
 export default WeatherCarrusel;
