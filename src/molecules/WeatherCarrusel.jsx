@@ -3,18 +3,6 @@ import WeatherCard from "../atoms/WeatherCard";
 import { render } from "react-dom";
 
 const WeatherCarrusel = ({ Title = "Example Title", WeatherList = [] }) => {
-  console.log("algo");
-  const renderCards = WeatherList.map((weather) => {
-    return (
-      <WeatherCard
-        Title={weather.title}
-        Temp={weather.temp}
-        Icon={weather.icon}
-        desc={weather.desc}
-      />
-    );
-  });
-
   const ShowData = () => {
     const renderCards = WeatherList.map((weather) => {
       return (
@@ -35,7 +23,7 @@ const WeatherCarrusel = ({ Title = "Example Title", WeatherList = [] }) => {
           </p>
         </div>
       );
-    return renderCards;
+    return <div class="flex space-x-4">{renderCards}</div>;
   };
 
   return (
@@ -45,7 +33,7 @@ const WeatherCarrusel = ({ Title = "Example Title", WeatherList = [] }) => {
           {Title}
         </h2>
       </div>
-      <div class="flex flex-row justify-between overflow-x-scroll scrollbar-thin w-auto scrollbar-thumb-gray-400 scrollbar-rounded-full">
+      <div class="flex flex-row justify-between overflow-x-auto scrollbar-thin w-auto scrollbar-thumb-gray-400 scrollbar-rounded-full">
         {ShowData()}
       </div>
     </div>

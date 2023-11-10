@@ -39,17 +39,19 @@ const useWeatherHourStore = create((set) => ({
     // console.log(data);
     const full_list = [];
     list.forEach((element) => {
-      const { dt: title, main, weather: wt } = element;
+      const { dt_txt: title, main, weather: wt } = element;
 
       const data = {};
       const date = new Date(title);
-      data.title = `${date.getHours()}:${date.getMinutes()}`;
-      data.temp = main.temp;
+      data.title = `${date.getDate() - 1}/${
+        date.getMonth() + 1
+      } - ${date.getHours()}:${date.getMinutes()}`;
+      data.temp = Number(main.temp.toFixed(0));
       data.icon = `https://openweathermap.org/img/wn/${wt[0].icon}.png`;
       data.desc = wt[0].description;
       full_list.push(data);
     });
-    set({ weather: full_list });
+    set({ weather: full_list.slice(0, 15) });
   },
 }));
 
@@ -59,16 +61,18 @@ const useWeatherDayStore = create((set) => ({
     const { list } = data;
     // console.log(data);
     const full_list = [];
+    let lastDay = 0
     list.forEach((element) => {
-      const { dt: title, main, weather: wt } = element;
+      const { dt_txt: title, main, weather: wt } = element;
 
       const data = {};
       const date = new Date(title);
-      data.title = `${date.getHours()}:${date.getMinutes()}`;
-      data.temp = main.temp;
+      data.title = `${date.getDate() - 1}/${date.getMonth() + 1}`;
+      data.temp = Number(main.temp.toFixed(0));
       data.icon = `https://openweathermap.org/img/wn/${wt[0].icon}.png`;
       data.desc = wt[0].description;
-      full_list.push(data);
+      console.log(date.getHours());
+      if (date.getHours() >= 6 && date.getHours() <= 12) full_list.push(data);
     });
     set({ weather: full_list });
   },

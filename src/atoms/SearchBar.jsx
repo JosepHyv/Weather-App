@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import { useWeatherHourStore, useWeatherStore } from "../hooks/useWeather";
+import {
+  useWeatherHourStore,
+  useWeatherStore,
+  useWeatherDayStore,
+} from "../hooks/useWeather";
 const geourl = `http://api.openweathermap.org/geo/1.0/direct`;
 const weatherurl = `https://api.openweathermap.org/data/2.5/weather`;
 const wByHourUrl = "https://api.openweathermap.org/data/2.5/forecast";
@@ -18,6 +22,8 @@ const Bar = () => {
   const [ciudad, setCiudad] = useState("");
   const { parse } = useWeatherStore();
   const { parse: parseHour } = useWeatherHourStore();
+  const { parse: parseDay } = useWeatherDayStore();
+
   const Search = (event) => {
     if (event.key === "Enter") {
       geoparams.q = ciudad;
@@ -31,8 +37,9 @@ const Bar = () => {
             parse(responses.data);
           });
           axios.get(wByHourUrl, { params: wparams }).then((responses) => {
-            // console.log(responses.data);
+            console.log(responses.data);
             parseHour(responses.data);
+            parseDay(responses.data);
           });
         }
       });

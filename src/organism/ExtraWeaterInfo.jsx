@@ -1,6 +1,6 @@
 import React from "react";
 import WeatherCarrusel from "../molecules/WeatherCarrusel";
-import { useWeatherHourStore, useWeatherStore } from "../hooks/useWeather";
+import { useWeatherHourStore, useWeatherDayStore } from "../hooks/useWeather";
 import UvCard from "../atoms/UvCard";
 import WindCard from "../atoms/WindCard";
 const ExtraWeaterInfo = () => {
@@ -80,19 +80,19 @@ const ExtraWeaterInfo = () => {
     },
   ];
 
-  const { weather, parse } = useWeatherHourStore();
-  console.log(weather);
+  const { weather:weatherHour } = useWeatherHourStore();
+  const { weather:weatherDay } = useWeatherDayStore();
 
   return (
     <div class="flex flex-col justify-between h-full">
-      <div class="flex flex-col h-2/3 justify-around">
+      <div class="flex flex-col h-2/3 justify-around w-full">
         <WeatherCarrusel
           Title="Pronostico cada 3 horas"
-          WeatherList={weather}
+          WeatherList={weatherHour}
         />
         <WeatherCarrusel
-          Title="Pronostico de los proximos 16 dias"
-          WeatherList={climaPorHora}
+          Title="Pronostico de los proximos 15 dias"
+          WeatherList={weatherDay}
         />
       </div>
       <div class="flex flex-row h-1/3 justify-around items-center">
