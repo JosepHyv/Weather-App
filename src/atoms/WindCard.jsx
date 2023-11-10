@@ -2,7 +2,10 @@ import React from "react";
 
 const WindCard = ({
   Title = "Title Example",
-  BigData = "28",
+  BigData = "0",
+  DGData = "0",
+  STitle = "Km",
+  TTitle = "Gust",
   info = "This is an info example",
   descroption = "Example",
 }) => {
@@ -14,25 +17,26 @@ const WindCard = ({
         </p>
         <div class="flex flex-row border-b-2">
           <p class="text-5xl  self-center m-2">{BigData}</p>
-          <div class="flex flex-col">
+          <div class="flex flex-col justify-center">
             <p class="text-2xl drop-shadow-xl font-normal text-blue-50 text-opacity-50 ">
-              {Title}
+              {STitle}
             </p>
-            <p class="text-lg font-medium">{descroption}</p>
           </div>
         </div>
         <div class="flex flex-row">
-          <p class="text-5xl  self-center m-2">{BigData}</p>
-          <div class="flex flex-col">
+          <p class="text-5xl  self-center m-2">{DGData}</p>
+          <div class="flex flex-col justify-center">
             <p class="text-2xl drop-shadow-xl font-normal text-blue-50 text-opacity-50 ">
-              {Title}
+              {TTitle}
             </p>
-            <p class="text-lg font-medium">{descroption}</p>
           </div>
         </div>
       </div>
-      <div class="text-center items-center self-center">
-        <p>Extra Component</p>
+      <div class="flex justify-center items-center self-center">
+        <img
+          src="https://png.pngtree.com/png-clipart/20230109/ourmid/pngtree-compass-rose-with-ring-ethnic-png-image_6557643.png"
+          class="w-44 invert items-center justify-center"
+        />
       </div>
     </div>
   );

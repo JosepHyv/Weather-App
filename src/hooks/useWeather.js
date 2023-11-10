@@ -9,12 +9,13 @@ const useWeatherStore = create((set) => ({
   temp: 0,
   feels: "0°C",
   humidity: "0%",
-  wind_speed: "",
+  wind_speed: "0",
   min_temp: "0°C",
   max_temp: "0°C",
-  wind_deg: "",
+  pressure: 0,
+  wind_deg: 0,
   parse: (data) => {
-    const { weather: weat, base, main, visibility, rain } = data;
+    const { weather: weat, base, main, visibility, rain, wind: wd } = data;
     set({ description: weat[0].description });
     set({ weather: main.temp.toFixed(0) });
     set({ feels: `${main.feels_like.toFixed(0)}°C` });
@@ -27,7 +28,9 @@ const useWeatherStore = create((set) => ({
     } else {
       set({ precipitation: "0 mm" });
     }
-
+    set({ wind_speed: `${wd.speed}` });
+    set({pressure: main.pressure})
+    set({ wind_deg: `${wd.deg}` });
     set({ humidity: `${main.humidity}%` });
   },
 }));
@@ -61,7 +64,7 @@ const useWeatherDayStore = create((set) => ({
     const { list } = data;
     // console.log(data);
     const full_list = [];
-    let lastDay = 0
+    let lastDay = 0;
     list.forEach((element) => {
       const { dt_txt: title, main, weather: wt } = element;
 
